@@ -1,5 +1,3 @@
-
-
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./Login";
 import Signup from "./Signup";
@@ -13,9 +11,18 @@ function App() {
 
   return (
     <Routes>
-      {/* PUBLIC */}
+      {/* PUBLIC ROUTES */}
+      <Route
+        path="/"
+        element={isLoggedIn ? <Navigate to="/dashboard" /> : <Login />}
+      />
 
-      {/* PROTECTED */}
+      <Route
+        path="/signup"
+        element={isLoggedIn ? <Navigate to="/dashboard" /> : <Signup />}
+      />
+
+      {/* PROTECTED ROUTES */}
       <Route
         path="/dashboard"
         element={isLoggedIn ? <Dashboard /> : <Navigate to="/" />}
